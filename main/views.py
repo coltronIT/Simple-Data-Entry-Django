@@ -27,5 +27,8 @@ def confirmation(response, id):
     DataList = DataEntryItems.objects.all()
     return render(response, "main/confirmation.html", {"CurrentDataItem": CurrentDataItem, "DataList": DataList} )
 
+def handler404(request, exception=None):
+    return render(request, "main/404.html")
+
 
 
