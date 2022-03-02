@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    font-family: serif;
+}
+body{
+    font-size: 1.2em;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #d9d9d9;
+}
+h1{
+    font-size: 2em;
+}
+a{
+    color: unset;
+}
+
+                                            /* Home Page */
+
+#content {
+    height: 80%;
+    width: 100%;
+    max-width: 35em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+}
+.content-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3em 0;
+}
+p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#createForm{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 40em;
+    margin: auto;
+}
+#createForm p{
+    margin: 1em 0;
+    display: flex;
+    justify-content: space-between;
+}
+#createForm button{
+    width: 7em;
+    height: 1.5em;
+    margin-left: auto;
+    border-radius: .2em;
+    font-size: .8em;
+    background-color: rgb(233, 233, 233);
+    margin-top: .5em;
+    border: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: all 2s ease;
+}
+#createForm button:hover{
+    background-color: rgb(65, 65, 65);
+    color: white;
+}
+p input{
+    border: none;
+}
+                                            /* End Of Home */
+
+                                          /* Confirmation Page */
+table{
+    width: 95%;
+    margin: 1em auto;
+    padding: 1.5em 1.5em;
+    margin-bottom: 2em;
+}
+table th{
+    padding: 1em 0;
+    flex-direction: row;
+    text-align: start;
+}
+table td{
+    padding: .5em 0;
+}
+table tbody:nth-child(even){
+    background-color: rgb(234, 234, 234);
+}
+.go-home{
+    position: absolute;
+    top: 2%;
+    right: 4%;
+}
+                                        /* End Of Confirmation Page */
+

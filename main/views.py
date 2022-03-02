@@ -9,6 +9,7 @@ def create(response):
         form = CreateNewList(response.POST)
 
         if form.is_valid():
+            # This cleaning process makes sure you never touch raw data and it goes through validation
             cleanName = form.cleaned_data["name"]
             cleanAge = form.cleaned_data["age"]
             cleanTitle = form.cleaned_data["title"]
@@ -16,10 +17,10 @@ def create(response):
             newDataItems = DataEntryItems(name=cleanName, age=cleanAge, title=cleanTitle, hometown=cleanHometown)
             newDataItems.save()
 
-        return HttpResponseRedirect("/confirmation/%i" % newDataItems.id)
+        return HttpResponseRedirect(f"/confirmation/{newDataItems.id}")
     else:
         form = CreateNewList()
-    return render(response, "main/create.html", {"form":form})
+    return render(response, "main/home.html", {"form":form})
 
 def confirmation(response, id):
     CurrentDataItem = DataEntryItems.objects.get(id=id)

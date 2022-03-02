@@ -1,31 +1,45 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Simple Data Entry | Title
+Simple Data Entry | Confirmation
 {% endblock %}
 {% block content %}
-    <h1>You just added:</h1>
-    <ul>
-        <li>{{CurrentDataItem.name}}</li>
-        <li>{{CurrentDataItem.age}}</li>
-        <li>{{CurrentDataItem.title}}</li>
-        <li>{{CurrentDataItem.hometown}}</li>
-        <li>{{CurrentDataItem.id}}</li>
-
-    </ul>
-    <h1>The Rest of them are:</h1>
+    <div class="go-home"><a href="/">Home</a></div>
+    <h2>Last Selected:</h2>
+    <table>
+        <thead>
+            <th>name</th>
+            <th>age</th>
+            <th>title</th>
+            <th>hometown</th>
+            <th>id</th>
+        </thead>
+        <tbody>
+            <td>{{CurrentDataItem.name}}</td>
+            <td>{{CurrentDataItem.age}}</td>
+            <td>{{CurrentDataItem.title}}</td>
+            <td>{{CurrentDataItem.hometown}}</td>
+            <td>{{CurrentDataItem.id}}</td>
+        </tbody>
+    </table>
+    <h2>Other Entries:</h2>
+    <table>
+        <thead>
+            <th>name</th>
+            <th>age</th>
+            <th>title</th>
+            <th>hometown</th>
+            <th>id</th>
+        </thead>
     {% for item in DataList %}
-    <ul>
-        {% if item != CurrentDataItem %}
-        <li>{{item.name}}</li>
-        <li>{{item.age}}</li>
-        <li>{{item.title}}</li>
-        <li>{{item.hometown}}</li>
-        <li>{{item.id}}</li>
-        {% endif %}
-
-    </ul>
-
+    <tbody>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.hometown}}</td>
+        <td><a href="{% url 'confirmation' item.id %}">{{item.id}}</a></td>
+    </tbody>
     {% endfor %}
+    </table>
 
 {% endblock %}
