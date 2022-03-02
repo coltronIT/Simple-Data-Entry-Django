@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Simple Data Entry | Title
+{% endblock %}
+{% block content %}
+    <h1>You just added:</h1>
+    <ul>
+        <li>{{ItemList.name}}</li>
+        <li>{{ItemList.age}}</li>
+        <li>{{ItemList.title}}</li>
+        <li>{{ItemList.hometown}}</li>
+
+    </ul>
+    <h1>The Rest of them are:</h1>
+    {% for item in DataList.item_set.all %}
+    <ul>
+        {% if item != ItemList %}
+        <li>{{item.name}}</li>
+        <li>{{item.age}}</li>
+        <li>{{item.title}}</li>
+        <li>{{item.hometown}}</li>
+        {% endif %}
+
+    </ul>
+
+    {% endfor %}
+
+{% endblock %}
