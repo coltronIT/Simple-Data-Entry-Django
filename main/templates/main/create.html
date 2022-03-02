@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Simple Data Entry | Home
+{% endblock %}
+{% block content %}
+<h1>homepage</h1>
+<h2>form will go here:</h2>
+
+<form method="post" action="/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save">Create New</button>
+</form>
+{% endblock %}

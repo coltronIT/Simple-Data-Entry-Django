@@ -1,20 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import DataEntryList, Item
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import DataEntryItems
+from .forms import CreateNewList
 # Create your views here.
 
-def home(response):
-    return render(response, "main/home.html", {})
+def create(response):
+    if response.method == "POST":
+        form = CreateNewList(response.POST)
+
+        if form.is_valid():
+            cleanName = form.cleaned_data["name"]
+            cleanAge = form.cleaned_data["age"]
+            cleanTitle = form.cleaned_data["title"]
+            cleanHometown = form.cleaned_data["hometown"]
+            newDataItems = DataEntryItems(name=cleanName, age=cleanAge, title=cleanTitle, hometown=cleanHometown)
+            newDataItems.save()
+
+        return HttpResponseRedirect("/confirmation/%i" % newDataItems.id)
+    else:
+        form = CreateNewList()
+    return render(response, "main/create.html", {"form":form})
 
 def confirmation(response, id):
-    DataList = DataEntryList.objects.get(id=2)
-    ItemList = DataList.item_set.get(id=id)
-    return render(response, "main/confirmation.html", {"DataList": DataList, "ItemList":ItemList})
+    CurrentDataItem = DataEntryItems.objects.get(id=id)
+    DataList = DataEntryItems.objects.all()
+    return render(response, "main/confirmation.html", {"CurrentDataItem": CurrentDataItem, "DataList": DataList} )
 
 
 
-# def item(response, id):
-#     DataList = DataEntryList.objects.get(id=id)
-#     ItemList = DataList.item_set.get(id=id)
-#     #return HttpResponse("<h1>we are talking about dataListName: %s  and itemListName: %s</h1>" % (str(DataList.name), str(ItemList.name)))
-#     return render(response, "main/item.html", {"itemListName":str(ItemList.name), "itemListAge":ItemList.age, "itemListTitle":str(ItemList.title), "itemListTitle":str(ItemList.hometown) })

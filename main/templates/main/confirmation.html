@@ -6,20 +6,22 @@ Simple Data Entry | Title
 {% block content %}
     <h1>You just added:</h1>
     <ul>
-        <li>{{ItemList.name}}</li>
-        <li>{{ItemList.age}}</li>
-        <li>{{ItemList.title}}</li>
-        <li>{{ItemList.hometown}}</li>
+        <li>{{CurrentDataItem.name}}</li>
+        <li>{{CurrentDataItem.age}}</li>
+        <li>{{CurrentDataItem.title}}</li>
+        <li>{{CurrentDataItem.hometown}}</li>
+        <li>{{CurrentDataItem.id}}</li>
 
     </ul>
     <h1>The Rest of them are:</h1>
-    {% for item in DataList.item_set.all %}
+    {% for item in DataList %}
     <ul>
-        {% if item != ItemList %}
+        {% if item != CurrentDataItem %}
         <li>{{item.name}}</li>
         <li>{{item.age}}</li>
         <li>{{item.title}}</li>
         <li>{{item.hometown}}</li>
+        <li>{{item.id}}</li>
         {% endif %}
 
     </ul>
