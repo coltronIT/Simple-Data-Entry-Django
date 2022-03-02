@@ -3,6 +3,7 @@
 Description:
 
 This is a Django Project that simply allows you to type in 4 fields and returns the data you filled out, as well as any other data you've filled out prior to. 
+This is made mobile-friendly with pure (and minimal) css from scratch.
 
 How to run:
 
@@ -15,3 +16,7 @@ How to run:
 4. run 'python manage.py runserver'
 5. open a browser at "http://localhost:8000"
 6. Please let me know if you have any questions/suggestions!
+
+
+(optional) -- How to Flush Database.  run 'python manage.py flush' then when prompted say 'yes' to flush the data
+
